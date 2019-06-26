@@ -1,20 +1,46 @@
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Polygon;
+import java.util.ArrayList;
 
 public class DrawGraphics {
     BouncingBox box;
+    ArrayList<BouncingBox> boxes;
     
     /** Initializes this class for drawing. */
     public DrawGraphics() {
-        box = new BouncingBox(200, 200, Color.MAGENTA);
+
+        //Making motion animation for three boxes
+
+        //firstly, we make 3 instances of the BouncingBox
+        BouncingBox firstBox = new BouncingBox(100, 100, Color.MAGENTA);
+        firstBox.setMovementVector(1, 2);
+
+        BouncingBox secondBox = new BouncingBox(200, 200, Color.MAGENTA);
+        secondBox.setMovementVector(1, 2);
+
+        BouncingBox thirdBox = new BouncingBox(150, 150, Color.MAGENTA);
+        thirdBox.setMovementVector(1, 2);
+
+        //we then add them to an arrayList
+        boxes = new ArrayList<BouncingBox>();
+        
+        boxes.add(firstBox);
+        boxes.add(secondBox);
+        boxes.add(thirdBox);
+
     }
 
     /** Draw the contents of the window on surface. Called 20 times per second. */
     public void draw(Graphics surface) {
 
         //drawing the box on the window
-        box.draw(surface);
+        //cycle through and animate the motion of the box
+        for(int i = 0; i < boxes.size(); i++){
+            boxes.get(i).draw(surface);
+        }
+
+        // box.draw(surface);
 
         //drawing random shapes on the window6;
         surface.drawLine(50, 50, 200, 50);
