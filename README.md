@@ -1,2 +1,2 @@
-# MIT-6.092-Assignments
-All the assignments for MIT 6.092: Introduction to Programming in Java
+# MIT-6.096-Assignments
+All the assignments for MIT 6.096: Introduction to C++
