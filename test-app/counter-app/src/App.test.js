@@ -23,9 +23,29 @@ describe('App component', () => {
   it('Increments count by 1 when the increment button is clicked', () => {
     const wrapper = shallow(<App />);
     const incrementButton = wrapper.find('button.increment');
+
+    //The simulate() function on the button variable can simulate a number of DOM events on an element
+    //Here we are simulating the click event on the button
+    //We've also set up an expectation that the count should be equal to now
     incrementButton.simulate('click');
     const text = wrapper.find('p').text();
     expect(text).toEqual('counter value: 1');
+  });
+
+  it('Decrements count by 1 when the decrement button is clicked', () => {
+    const wrapper = shallow(<App/>);
+    const decrementButton = wrapper.find('button.decrement');
+    decrementButton.simulate('click');
+    const text = wrapper.find('p').text();
+    expect(text).toEqual('counter value: -1');
+  });
+
+  it('Resets the count to 0', () => {
+    const wrapper = shallow(<App/>);
+    const resetButton = wrapper.find('button.reset');
+    resetButton.simulate('click');
+    const text = wrapper.find('p').text();
+    expect(text).toEqual('counter value: 0');
   });
 
 });
